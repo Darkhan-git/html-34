@@ -5,94 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Практика по CSS псевдоклассам</title>
     <style>
-        /* Базовые стили для красоты */
-        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; background-color: #f9f9f9; }
-        section { background: #fff; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        h2 { color: #333; border-bottom: 2px solid #eee; padding-bottom: 5px; }
+        button { padding: 10px 15px; background-color: blue; color: white; border: none; border-radius: 4px; cursor: pointer;  }
+        button:hover { background-color: green; }
+        input { padding: 8px; border: 2px solid black; outline: none; }
+        input:focus { border-color: blue; }
 
-        /* --- ЗАДАНИЕ 1: Псевдоклассы hover и focus --- */
-        button { padding: 10px 15px; background-color: #007BFF; color: white; border: none; border-radius: 4px; cursor: pointer; transition: background-color 0.3s; }
-        /* Изменяем цвет кнопки при наведении мыши */
-        button:hover { background-color: #0056b3; }
+        ul li:first-child { font-weight: bold; color: green; }
+        ul li:last-child { font-style: italic; color: red; }
 
-        input { padding: 8px; border: 2px solid #ccc; border-radius: 4px; outline: none; transition: border-color 0.3s; }
-        /* Меняет цвет границы поля при фокусе (когда пользователь кликает на него) */
-        input:focus { border-color: #007BFF; }
+        .block-links a { color: blue; font-weight: bold; }
+        .block-links a:hover { color: pink; }
+        .block-text p:nth-child(odd) { background-color: lightblue; }
 
-        /* --- ЗАДАНИЕ 2: first-child и last-child --- */
-        ul { list-style-type: none; padding: 0; }
-        ul li { padding: 8px; border-bottom: 1px solid #ddd; }
-        /* Выделяем первый элемент списка */
-        ul li:first-child { font-weight: bold; color: #28a745; }
-        /* Выделяем последний элемент списка */
-        ul li:last-child { font-style: italic; color: #dc3545; }
-
-        /* --- ЗАДАНИЕ 3: Применение псевдоклассов к разным элементам --- */
-        .block-links a { color: #ff9800; text-decoration: none; font-weight: bold; }
-        /* Цвет ссылки при наведении */
-        .block-links a:hover { color: #e65100; text-decoration: underline; }
-
-        .block-text p { padding: 5px; }
-        /* Меняем вид нечетных (odd) текстовых элементов */
-        .block-text p:nth-child(odd) { background-color: #e3f2fd; }
-
-        /* --- ЗАДАНИЕ 4: Комбинация псевдоклассов --- */
-        /* Элемент является первым дочерним и изменяется при наведении */
-        .combo-container p:first-child:hover { color: #9c27b0; font-weight: bold; cursor: pointer; }
-
-        /* Элемент находится в фокусе и является последним дочерним */
-        .combo-container input:last-child:focus { border-color: #e91e63; box-shadow: 0 0 8px rgba(233, 30, 99, 0.3); }
+        .combo-container p:first-child:hover { color: pink; font-weight: bold; cursor: pointer; }
+        .combo-container input:last-child:focus { border-color: red; }
     </style>
 </head>
 <body>
-
-    <section>
-        <h2>Задание 1: hover и focus</h2>
-        <p>Кликните на поле ввода или наведите курсор на кнопку.</p>
-        <!-- Форма -->
+        <h2>Задание 1</h2>
         <form>
             <input type="text" placeholder="Поле ввода">
             <button type="button">Кнопка</button>
         </form>
-        <p><strong>Пояснение:</strong> :hover срабатывает при наведении курсора. :focus активируется, когда элемент становится активным (например, курсор установлен в поле ввода).</p>
-    </section>
 
-    <section>
-        <h2>Задание 2: first-child и last-child</h2>
-        <!-- Список -->
+        <h2>Задание 2</h2>
         <ul>
-            <li>Первый элемент списка (Зеленый и жирный)</li>
+            <li>Первый элемент списка</li>
             <li>Второй элемент списка</li>
             <li>Третий элемент списка</li>
-            <li>Последний элемент списка (Красный и курсив)</li>
+            <li>Четвертый элемент списка</li>
         </ul>
-        <p><strong>Пояснение:</strong> <code>:first-child</code> выбирает самый первый дочерний элемент внутри родителя. <code>:last-child</code> выбирает самый последний. Идеально для списков и сеток.</p>
-    </section>
 
-    <section>
-        <h2>Задание 3: Применение к разным элементам</h2>
+        <h2>Задание 3</h2>
         <div class="block-links">
-            <p>Ссылка в блоке: <a href="#">Наведи на меня</a></p>
+            <p>Текстовой элемент: <a href="https://web.whatsapp.com/">Ссылка</a></p>
         </div>
         <div class="block-text">
-            <p>Абзац 1 (Нечетный)</p>
-            <p>Абзац 2 (Четный)</p>
-            <p>Абзац 3 (Нечетный)</p>
-            <p>Абзац 4 (Четный)</p>
+            <p>Абзац 1</p>
+            <p>Абзац 2</p>
+            <p>Абзац 3</p>
+            <p>Абзац 4</p>
         </div>
-        <p><strong>Пояснение:</strong> Псевдоклассы работают независимо от тега, если элемент соответствует правилу. Для нумерации (нечетные/четные) применяется функциональный псевдокласс <code>:nth-child(odd)</code>.</p>
-    </section>
 
-    <section>
-        <h2>Задание 4: Комбинация псевдоклассов</h2>
+        <h2>Задание 4</h2>
         <div class="combo-container">
-            <p>Наведите на этот первый абзац (изменит цвет на фиолетовый).</p>
-            <p>Второй абзац (не реагирует).</p>
-            <p>Последний элемент в блоке — поле ввода. Кликните на него (изменит цвет границы).</p>
-            <input type="text" placeholder="Поле ввода в конце">
+            <p>Изменяется при наведении курсора</p>
+            <p>Без изменений</p>
+            <input type="text" placeholder="Поле ввода">
         </div>
-        <p><strong>Пояснение:</strong> Вы можете объединять псевдоклассы слитно (без пробелов), чтобы применять стили только при соблюдении нескольких условий одновременно, например: <code>:first-child:hover</code>.</p>
-    </section>
-
 </body>
 </html>
